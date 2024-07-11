@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
-import { users, orders, faqs, products, carts } from "../dummy-data";
+import { users, orders, faqs, products, carts } from "../../shared/lib/dummy-data";
 
 const client = await db.connect();
 
@@ -45,7 +45,7 @@ async function seedOrders() {
   const insertedIOrders = await Promise.all(
     orders.map(
       (order) => client.sql`
-        INSERT INTO invoices (user_id, amount, status, date)
+        INSERT INTO orders (user_id, amount, status, date)
         VALUES (${order.user_id}, ${order.amount}, ${order.status}, ${order.date})
         ON CONFLICT (id) DO NOTHING;
       `,
@@ -62,8 +62,8 @@ async function seedCarts() {
     CREATE TABLE IF NOT EXISTS carts (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
       user_id UUID NOT NULL,
-      amount INT NOT NULL,
-    );
+      amount INT NOT NULL
+    )
   `;
 
   const insertedCarts = await Promise.all(
@@ -87,15 +87,15 @@ async function seedProducts() {
       name VARCHAR(255) NOT NULL,
       car_model VARCHAR(255) NOT NULL,
       price INT NOT NULL,
-      stock_quantity INT NOT NULL,
-    );
+      stock_quantity INT NOT NULL
+    )
   `;
 
   const insertedProducts = await Promise.all(
     products.map((product) => {
       return client.sql`
-        INSERT INTO products (id, name, car_model, stock_quantity)
-        VALUES (${product.id}, ${product.name}, ${product.carModel}, ${product.stockQuantity})
+        INSERT INTO products (name, car_model, price, stock_quantity)
+        VALUES (${product.name}, ${product.car_model}, ${product.price}, ${product.stock_quantity})
         ON CONFLICT (id) DO NOTHING;
       `;
     }),
@@ -106,6 +106,7 @@ async function seedProducts() {
 
 async function seedFaqs() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
   await client.sql`
     CREATE TABLE IF NOT EXISTS faqs (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -117,8 +118,8 @@ async function seedFaqs() {
   const insertedFaqs = await Promise.all(
     faqs.map(async (faq) => {
       return client.sql`
-        INSERT INTO faqs (id, question, answer)
-        VALUES (${faq.id}, ${faq.question}, ${faq.answer})
+        INSERT INTO faqs (question, answer)
+        VALUES (${faq.question}, ${faq.answer})
         ON CONFLICT (id) DO NOTHING;
       `;
     }),
@@ -138,6 +139,7 @@ export async function GET() {
     await seedOrders();
     await seedFaqs();
     await seedCarts();
+    await seedProducts();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
