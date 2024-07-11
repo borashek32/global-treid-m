@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+  --section-padding-1440: 50px 200px 50px 200px;
+  --section-padding-1439: 30px 100px 30px 100px;
+  --section-padding-720: 30px 20px 30px 20px;
+
+  --header-padding-1440: 0 200px 0 200px;
+  --header-padding-1439: 0 100px 0 100px;
+  --header-padding-720: 0 20px 0 20px;
+
+  --color-primary: #0051A3;
+  --color-bg-primary: #fff;
+  --color-text-primary: #000;
+
+  --transition-variable: all .3s ease;
+}
+/* utility header of sections */
+h2 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  padding: 0;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+/* utility subheader of sections */
+h4 {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--color-text-primary);
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+section {
+  text-align: center;
+  padding: var(--section-padding-1440);
+}
+
+@media (max-width: 1439px) {
+  section {
+    padding: var(--section-padding-1439);
+  }
+}
+
+@media (max-width: 720px) {
+  section {
+    padding: var(--section-padding-720);
+  }
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 100px;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  background-color: #fff;
+}
+
+main {
+  flex: 1 1 auto;
+  margin-top: 100px;
+}
+
+.dashboardContainer {
+  padding: var(--section-padding-1440);
+}
+
+@media (max-width: 1439px) {
+  .dashboardContainer {
+    padding: var(--section-padding-1439);
+  }
+  .header {
+    height: 70px;
+  }
+  main {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboardContainer {
+    padding: var(--section-padding-720);
+  }
+}
