@@ -1,0 +1,31 @@
+.autoparts {
+  
+}
+
+.autoparts__descText {
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.autoparts__link {
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 24px;
+  cursor: pointer;
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1439px) {
+  .autoparts {
+    padding: var(--section-padding-1439);
+  }
+}
+
+@media (max-width: 720px) {
+  .autoparts {
+    padding: var(--section-padding-720);
+  }
+}
