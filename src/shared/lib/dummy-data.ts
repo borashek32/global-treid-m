@@ -132,7 +132,7 @@ const faqs = [
     <p>Если вы уже рарегистрировались, как физическое лицо, то перейдите на страницу вашего профиля, в меню слева выберите пункт &quot;Настройки&quot;. В настройках отметьте галочкой чекбокс &quot;юридическое лицо&quot;. Откроется форма для внесения реквизитов вашей компании. Заполните все обязательные поля.</p>`
   },
   {
-    id: 1,
+    id: 2,
     question: 'Как мне удалить свой аккаунт на портале?',
     answer: `<p>Перейдите на страницу вашего профиля, в меня слева выберите пункт &quot;Настройки&quot;. Промотайте страницу до конца. Нажмите кнопку &quot;Удалить аккунт&quot;. Подтвердите удаление во всплывающем модальном окне.</p>`
   }
@@ -140,18 +140,18 @@ const faqs = [
 
 const products = [
   {
-    id: 1,
-    name: 'Зеркало заднего вида',
-    carModel: 'Москвич',
-    price: '1000',
-    stockQuantity: 20,
+    id: '1',
+    name: 'Зеркалo',
+    car_model: 'Москвич',
+    price: 1000,
+    stock_quantity: 20,
   },
   {
-    id: 2,
-    name: 'Лобовое стекло',
-    carModel: 'Mercedez',
-    price: '1000',
-    stockQuantity: 20,
+    id: '2',
+    name: 'Стекло',
+    car_model: 'Mercedez',
+    price: 1000,
+    stock_quantity: 20,
   }
 ];
 
@@ -159,30 +159,18 @@ const carts = [
   {
     user_id: users[0].id,
     amount: 15795,
-    products: [
-      { id: 1, price: 20, quantity: 2 }
-    ],
   },
   {
     user_id: users[1].id,
     amount: 15796,
-    products: [
-      { id: 1, price: 20, quantity: 2 }
-    ],
   },
   {
     user_id: users[2].id,
     amount: 15797,
-    products: [
-      { id: 1, price: 20, quantity: 2 }
-    ],
   },
   {
     user_id: users[3].id,
     amount: 15798,
-    products: [
-      { id: 1, price: 20, quantity: 2 }
-    ],
   },
 ];
 
