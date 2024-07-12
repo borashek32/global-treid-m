@@ -3,9 +3,18 @@
 import Image from 'next/image';
 import arrow from '@/shared/assets/icons/arrow.svg';
 import { useState } from 'react';
+import { FaqType } from '@/shared/lib/types';
 
-export const FAQ = () => {
-	const [active, setActive] = useState(false)
+type Props = {
+	faqs: FaqType[]
+}
+
+export const FAQ = ({ faqs }: Props) => {
+	const [activeFaqId, setActiveFaqId] = useState<string | null>(null);
+
+	const showAnswer = (id: string) => {
+    setActiveFaqId(prevId => (prevId === id ? null : id));
+  };
 
   return (
 		<div className="py-10 bg-gray-50 sm:py-16 lg:py-24">
@@ -15,20 +24,27 @@ export const FAQ = () => {
 			</div>
 			<div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
 				<div className="max-w-3xl mx-auto mt-8 space-y-4 md:mt-16">
-					<div onClick={() => setActive(!active)} className="transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50">
-						<button type="button" className="flex flex-row gap-4 w-full px-4 py-5 sm:p-6">
-							<span className="flex text-lg font-semibold text-black">
-								Как мне зарегистрироваться на портале, в качестве юридического лица?
-							</span>
-							<Image src={arrow} alt='arrow' />
-						</button>
-						{active &&
-							<div className="px-4 pb-5 sm:px-6 sm:pb-6">
-								<p>Если вы регистрируетесь, то перейдите на страницу регистрации. Заполните регистрационные данные и отметьте галочкой чекбокс &quot;юридическое лицо&quot;. Под формой регистрации откроется форма добавления реквизитов вашей компании. Заполните все обязательные поля.</p>
-								<p>Если вы уже рарегистрировались, как физическое лицо, то перейдите на страницу вашего профиля, в настройках отметьте галочкой чекбокс &quot;юридическое лицо&quot;. Откроется форма для внесения реквизитов вашей компании. Заполните все обязательные поля.</p>
+					{faqs && faqs.map((faq: FaqType) => {
+						return (
+							<div 
+								key={faq.id}
+								onClick={() => showAnswer(faq.id)} 
+								className="transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50"
+							>
+								<button type="button" className="flex flex-row gap-4 w-full px-4 py-5 sm:p-6">
+									<span className="flex text-lg font-semibold text-black">
+										{faq.question}
+									</span>
+									<Image src={arrow} alt='arrow' />
+								</button>
+								{activeFaqId === faq.id &&
+									<div className="px-4 pb-5 sm:px-6 sm:pb-6">
+										{faq.answer}
+									</div>
+								}
 							</div>
-						}
-					</div>
+						)
+					})}
 				</div>
 				<p className="text-center text-gray-600 textbase mt-9">
 					Still have questions? 

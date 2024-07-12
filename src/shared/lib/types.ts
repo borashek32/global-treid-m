@@ -15,7 +15,7 @@ export type OrderType = {
 };
 
 export type FaqType = {
-  id: number,
+  id: string,
   question: string,
   answer: string,
 };
