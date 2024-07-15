@@ -47,10 +47,7 @@ export const FAQ = ({ faqs }: Props) => {
 					})}
 				</div>
 				<p className="text-center text-gray-600 textbase mt-9">
-					Still have questions? 
-					<span className="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline">Contact
-						our support
-					</span>
+					Если у вас есть еще вопросы, <span className="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline">свяжитесь с нашей технической поддержкой</span>
 				</p>
 			</div>
 		</div>

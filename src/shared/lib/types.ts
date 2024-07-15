@@ -23,7 +23,7 @@ export type FaqType = {
 export type ProductType = {
   id: number,
   name: string,
-  carModel: string,
+  car_model: string,
   price: number,
   stockQuantity: number,
 }
