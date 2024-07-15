@@ -27,6 +27,10 @@
   background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
 }
 
+.autoparts__searchWrapper {
+  margin-top: 15px;
+}
+
 /* autopart item from db */
 .autopart {
   display: flex;

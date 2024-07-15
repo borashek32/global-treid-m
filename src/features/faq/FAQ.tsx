@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 import arrow from '@/shared/assets/icons/arrow.svg';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { FaqType } from '@/shared/lib/types';
 
 type Props = {
 	faqs: FaqType[]
 }
 
-export const FAQ = ({ faqs }: Props) => {
+export const FAQ: FC<Props> = ({ faqs }: Props) => {
 	const [activeFaqId, setActiveFaqId] = useState<string | null>(null);
 
 	const showAnswer = (id: string) => {

@@ -2,24 +2,43 @@
 
 import Link from 'next/link';
 import styles from './Autoparts.module.css';
-import { ProductType } from '@/shared/lib/types';
-import { FC } from 'react';
+import { ProductFromInternalDBType, ProdustFromFavoritApiType } from '@/shared/lib/types';
+import { FC, useEffect, useState } from 'react';
+import { getAutoparts } from '@/shared/lib/fetch-data-from-api';
+import { Input } from '@/shared/components/input/Input';
+import { Loader } from '@/shared/components/loader/Loader';
 
 type Props = {
-  autoparts: ProductType[]
+  autoparts: ProductFromInternalDBType[] | ProdustFromFavoritApiType[],
 }
 
 export const Autoparts: FC<Props> = ({ autoparts }: Props) => {
-  console.log(autoparts)
+  const [vinNumber, setVinNumber] = useState('')
+
+  useEffect(() => {
+    if (vinNumber) {
+      console.log(vinNumber)
+      getAutoparts(vinNumber)
+    }
+  }, [vinNumber])
 
   return (
     <section className={styles.autoparts}>
       <div>
 				<h2>Каталог товаров</h2>
-				<h4>Наш каталог содержит более 1 млн. наименований товаров. Для поиска необходимой запасной части воспользуйтесь поиском</h4>
+				<h4>Наш каталог содержит более 1 млн. наименований товаров. Также мы работаем с другими агрегаторами запасных частей. Для поиска необходимой детали воспользуйтесь поиском</h4>
 			</div>
+      <div className={styles.autoparts__searchWrapper}>
+        <Input 
+          type='text'
+          search={true}
+          placeholder='Введите VIN детали, название или модель авто'
+          setNumber={setVinNumber} 
+        />
+      </div>
+      <Loader />
       <div className={styles.autoparts__listWrapper}>
-        <div className={styles.autoparts__list}>{autoparts && autoparts.map((autopart: ProductType) => {
+        <div className={styles.autoparts__list}>{autoparts && autoparts.map((autopart: any) => {
           return (
             <div className={styles.autoparts__item + ' ' + styles.autopart} key={autopart.id}>
               <p className={styles.autopart__title}>{autopart.name} </p>

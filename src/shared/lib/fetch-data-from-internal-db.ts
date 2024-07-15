@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { FaqType, ProductType, UserType } from './types';
+import { FaqType, ProductFromInternalDBType, UserType } from './types';
 
 export async function fetchUsers() {
   try {
@@ -24,7 +24,7 @@ export async function fetchFaqs() {
 
 export async function fetchAutoparts() {
   try {
-    const data = await sql<ProductType>`SELECT * FROM products`;
+    const data = await sql<ProductFromInternalDBType>`SELECT * FROM products`;
 
     return data.rows;
   } catch (error) {
