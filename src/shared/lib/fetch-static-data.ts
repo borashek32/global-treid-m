@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { FaqType, ProductFromInternalDBType, UserType } from './types';
+import { DeliveryType, FaqType, ProductFromInternalDBType, ReturnType, UserType } from './types';
 
 export async function fetchUsers() {
   try {
@@ -29,5 +29,25 @@ export async function fetchAutoparts() {
     return data.rows;
   } catch (error) {
     throw new Error('Failed to fetch products data.');
+  }
+}
+
+export async function fetchDeliveries() {
+  try {
+    const data = await sql<DeliveryType>`SELECT * FROM deliveries`;
+
+    return data.rows;
+  } catch (error) {
+    throw new Error('Failed to fetch delivery data.');
+  }
+}
+
+export async function fetchReturns() {
+  try {
+    const data = await sql<ReturnType>`SELECT * FROM returns`;
+
+    return data.rows;
+  } catch (error) {
+    throw new Error('Failed to fetch returns data.');
   }
 }

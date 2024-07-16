@@ -26,6 +26,17 @@ export type CartType = {
   amount: number,
 };
 
+export type DeliveryType = {
+  id: string,
+  title: string,
+  description: string,
+}
+
+export type ReturnType = {
+  id: string,
+  description: string,
+}
+
 export type ProductFromInternalDBType = {
   id: number,
   name: string,

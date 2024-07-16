@@ -10,6 +10,8 @@ async function clearDatabase() {
   await client.sql`DROP TABLE IF EXISTS orders CASCADE`;
   await client.sql`DROP TABLE IF EXISTS products CASCADE`;
   await client.sql`DROP TABLE IF EXISTS carts CASCADE`;
+  await client.sql`DROP TABLE IF EXISTS deliveries CASCADE`;
+  await client.sql`DROP TABLE IF EXISTS returns CASCADE`;
 
   return 'Database cleared';
 }
