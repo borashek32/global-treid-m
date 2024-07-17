@@ -27,9 +27,6 @@ export const Header = () => {
             <Link href='#' className={styles.header__link}>Возврат</Link>
           </li>
           <li>
-            <Link href='#' className={styles.header__link}>Реквизиты</Link>
-          </li>
-          <li>
             <Link href='#' className={styles.header__link}>FAQ</Link>
           </li>
         </ul>
@@ -59,9 +56,6 @@ export const Header = () => {
             </li>
             <li onClick={() => setActive(false)}>
               <Link href='#' className={styles.header__link}>Возврат</Link>
-            </li>
-            <li onClick={() => setActive(false)}>
-              <Link href='#' className={styles.header__link}>Реквизиты</Link>
             </li>
             <li onClick={() => setActive(false)}>
               <Link href='#' className={styles.header__link}>FAQ</Link>

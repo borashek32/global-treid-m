@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
-import { users, orders, faqs, products, carts } from "../../shared/lib/dummy-data";
+import { users, orders, faqs, products, carts, deliveries, returns } from "../../shared/lib/static-data";
 
 const client = await db.connect();
 
@@ -128,6 +128,53 @@ async function seedFaqs() {
   return insertedFaqs;
 }
 
+async function seedDeliveries() {
+  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS deliveries (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      title TEXT NOT NULL,
+      description TEXT NOT NULL
+    );
+  `;
+
+  const insertedDeliveries = await Promise.all(
+    deliveries.map(async (delivery) => {
+      return client.sql`
+        INSERT INTO deliveries (title, description)
+        VALUES (${delivery.title}, ${delivery.description})
+        ON CONFLICT (id) DO NOTHING;
+      `;
+    }),
+  );
+
+  return insertedDeliveries;
+}
+
+async function seedReturns() {
+  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS returns (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      description TEXT NOT NULL
+    );
+  `;
+
+  const insertedReturns = await Promise.all(
+    returns.map(async (ret) => {
+      return client.sql`
+        INSERT INTO returns (description)
+        VALUES (${ret.description})
+        ON CONFLICT (id) DO NOTHING;
+      `;
+    }),
+  );
+
+  return insertedReturns;
+}
+
 export async function GET() {
   // return Response.json({
   //   message:
@@ -140,6 +187,8 @@ export async function GET() {
     await seedFaqs();
     await seedCarts();
     await seedProducts();
+    await seedDeliveries();
+    await seedReturns();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
