@@ -27,22 +27,21 @@
 .promo__subheader {
   font-size: 46px;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .promo__desc {
+  color: #fff;
   font-size: 18px;
-  margin-top: 10px;
+  text-align: center;
+  line-height: 24px;
 }
 
-.promo__searchWrapper {
+.promo__desc:last-child {
   margin-top: 40px;
 }
 
 @media (max-width: 720px) {
-  .promo__searchWrapper {
-    margin-top: 30px;
-  }
   .promo__header {
     font-weight: 600;
   }

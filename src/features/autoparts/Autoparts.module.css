@@ -1,6 +1,56 @@
 .autoparts {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.autoparts__listWrapper {
+  margin-bottom: 70px;
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.autoparts__list {
+  height: 100%;
+  overflow: scroll;
+}
+
+.autoparts__list:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+
+.autoparts__searchWrapper {
+  margin-top: 15px;
+}
+
+/* autopart item from db */
+.autopart {
+  display: flex;
+  gap: 5px;
+}
+
+.autopart__title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.autopart__desc {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.autopart__desc:last-child {
+  text-decoration: underline;
+}
+/* --- */
 
 .autoparts__descText {
   font-size: 12px;
