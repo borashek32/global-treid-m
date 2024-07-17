@@ -12,6 +12,8 @@ import { Logo } from '../logo/Logo';
 export const Header = () => {
   const [active, setActive] = useState(false);
 
+  
+
   return (
     <>
       <nav className={styles.header}>
