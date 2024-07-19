@@ -8,7 +8,7 @@ export async function getAutoparts(number: string) {
         number: number,
       }
     });
-    console.log('api', response);
+    return response
   } catch (error) {
     throw new Error('Failed to fetch products data.');
   }  

@@ -39,13 +39,15 @@ export const Delivery: FC<Props> = ({ items }: Props) => {
 										<span className="flex text-lg font-semibold text-black">
 											{item.title}
 										</span>
-										<Image src={arrow} alt='arrow' />
+										<Image src={arrow} alt='arrow' className={"mt-1 transition ease-in-out" + ' ' + (activeItemId !== item.id ? "rotate-180" : "")} />
 									</button>
-									{activeItemId === item.id &&
-										<div className="px-4 pb-5 sm:px-6 sm:pb-6">
-											{item.description}
-										</div>
-									}
+									<div className={
+										activeItemId !== item.id 
+											? "hidden" 
+											: "px-4 pb-5 sm:px-6 sm:pb-6 transition ease-in-out"
+									}>
+										{item.description}
+									</div>
 								</div>
 							)
 						})}
