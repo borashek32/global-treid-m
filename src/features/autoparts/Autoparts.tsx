@@ -2,26 +2,25 @@
 
 import Link from 'next/link';
 import styles from './Autoparts.module.css';
-import { useEffect, useState } from 'react';
-import { getAutoparts } from '@/shared/lib/fetch-data-from-api';
 import { Input } from '@/shared/components/input/Input';
 import { Loader } from '@/shared/components/loader/Loader';
 import { CallSupport } from '@/shared/components/call-support/CallSupport';
-
-// type Props = {
-//   autoparts: ProdustFromFavoritApiType[],
-// }
+import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
+import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
+import { useAppSelector } from '@/shared/hooks/use-app-selector';
+import { selectAutoparts, selectError, selectIsLoading } from '@/shared/providers/store-provider/selectors/autoparts-selectors';
+import { Error } from '@/shared/components/error/Error';
+import { ProductFromFavoritApiType } from '@/shared/types/types';
 
 export const Autoparts = () => {
-  const [vinNumber, setVinNumber] = useState('');
+  const dispatch = useAppDispatch();
+  const autoparts = useAppSelector(selectAutoparts);
+  const isLoading = useAppSelector(selectIsLoading);
+  const error = useAppSelector(selectError);
 
-  useEffect(() => {
-    if (vinNumber) {
-      getAutoparts(vinNumber).then((res) => 
-        console.log(res.data.goods)
-      )
-    }
-  }, [vinNumber]);
+  const searchAutoparts = (number: string) => {
+    dispatch(fetchAutoparts(number));
+  }
 
   return (
     <section className={styles.autoparts}>
@@ -34,25 +33,34 @@ export const Autoparts = () => {
           type='text'
           search={true}
           placeholder='Введите VIN детали, название или модель авто'
-          setNumber={setVinNumber} 
+          setNumber={searchAutoparts} 
         />
       </div>
-      <Loader />
-      {/* <div className={styles.autoparts__listWrapper}>
-        <div className={styles.autoparts__list}>{autoparts && autoparts.map((autopart: any) => {
-          return (
-            <div className={styles.autoparts__item + ' ' + styles.autopart} key={autopart.id}>
-              <p className={styles.autopart__title}>{autopart.name} </p>
-              <p className={styles.autopart__desc}>на {autopart.car_model}, </p>
-              <p className={styles.autopart__desc}>по цене {autopart.price} руб., </p>
-              <Link href={'#'}>
-                <p className={styles.autopart__desc}>подробнее...</p>
-              </Link>
-            </div>
-          )
-        })}
+      {isLoading && <Loader />}
+      {error && <Error error={error} />}
+      {autoparts.length !== 0 && <div className={styles.autoparts__listWrapper}>
+        <div className={styles.autoparts__list}>
+          {autoparts && 
+            autoparts.map((autopart: ProductFromFavoritApiType) => {
+              return (
+                <div key={autopart.goodsID} className="w-80 p-6 bg-gray-100 hover:bg-gray- border border-gray-200 rounded-lg shadow">
+                  <Link href="#">
+                    <h5 className="text-xl tracking-tight text-black">{autopart.name.slice(0, 40)}...</h5>
+                    <p className="mb-4">подробнее...</p>
+                  </Link>
+                  <p className="mb-3 font-normal text-black">{autopart.price * 1.2} руб.</p>
+                  <Link href={'#'} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      В корзину
+                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                  </Link>
+                </div>
+              )
+            }
+          )}
         </div>
-      </div> */}
+      </div>}
       <div className={styles.autoparts__desc}>
         <p className={styles.autoparts__descText}>Вы можете найти нужную автозапчасть по каталожному номеру или по названию.Если вы зарегистрированны, как физическое лицо, то вам будут предоставлены цены для физических лиц. Для того, чтобы стать нашим партнером, зарегистрируйте аккаунт юридического лица и прикрепите реквизиты вашей компании. Подробнее смотрите в</p>
         <Link href='#' className={styles.autoparts__link}>ответах на частые вопросы FAQ</Link>

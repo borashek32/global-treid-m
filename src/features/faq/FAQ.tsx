@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import arrow from '@/shared/assets/icons/arrow.svg';
 import { FC, useState } from 'react';
-import { FaqType } from '@/shared/lib/types';
 import { CallSupport } from '@/shared/components/call-support/CallSupport';
+import { FaqType } from '@/shared/types/types';
 
 type Props = {
 	items: FaqType[]
@@ -19,7 +19,7 @@ export const FAQ: FC<Props> = ({ items }: Props) => {
 
   return (
 		<section className='bg-gray-100'>
-			<div className="py-10  sm:py-16 lg:py-24">
+			<div className="py-2 sm:py-2 lg:py-2">
 				<div>
 					<h2>Часто задаваемые вопросы</h2>
 					<h4>Вы сможете найти ответы на часто задаваемые вопросы в этом разделе</h4>

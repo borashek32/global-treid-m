@@ -46,7 +46,7 @@ export type ProductFromInternalDBType = {
 };
 
 // Api Favorit types, surce https://api.favorit-parts.ru/static/wsprice.pdf?v=060223
-export type ProdustFromFavoritApiType = {
+export type ProductFromFavoritApiType = {
   //  Идентификатор товара 
   goodsID: string,
   brand: string,
@@ -61,7 +61,7 @@ export type ProdustFromFavoritApiType = {
   rate: number,
   // Массив с аналогами (с параметрами как в goods) (значение
   // возвращается, если переданы параметры «analogues=on» и brand)
-  analogues?: ProdustFromFavoritApiType[],
+  analogues?: ProductFromFavoritApiType[],
   // Массив складов на которых имеется товар
   warehouses: WarehouseFavoritApiType[],
   // Невозвратная позиция 
