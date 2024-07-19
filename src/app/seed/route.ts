@@ -79,43 +79,43 @@ async function seedCarts() {
   return insertedCarts;
 }
 
-async function seedProducts() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS products (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      goodsID VARCHAR(255) NOT NULL,
-      brand VARCHAR(255) NOT NULL,
-      number VARCHAR(255) NOT NULL,
-      name VARCHAR(255) NOT NULL,
-      count INT NOT NULL,
-      price NUMERIC NOT NULL,
-      rate INT NOT NULL,
-      warehouses text[] DEFAULT '{}'
-    )
-  `;
+// async function seedProducts() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS products (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       goodsID VARCHAR(255) NOT NULL,
+//       brand VARCHAR(255) NOT NULL,
+//       number VARCHAR(255) NOT NULL,
+//       name VARCHAR(255) NOT NULL,
+//       count INT NOT NULL,
+//       price NUMERIC NOT NULL,
+//       rate INT NOT NULL,
+//       warehouses text[] DEFAULT '{}'
+//     )
+//   `;
 
-  const insertedProducts = await Promise.all(
-    products.map((product) => {
-      return client.sql`
-        INSERT INTO products (goodsID, brand, number, name, count, price, rate, warehouses)
-        VALUES (
-          ${product.goodsID}, 
-          ${product.brand}, 
-          ${product.number}, 
-          ${product.name}, 
-          ${product.count}, 
-          ${product.price}, 
-          ${product.rate}, 
-          ${product.warehouses}
-        )
-        ON CONFLICT (id) DO NOTHING;
-      `;
-    }),
-  );
+//   const insertedProducts = await Promise.all(
+//     products.map((product) => {
+//       return client.sql`
+//         INSERT INTO products (goodsID, brand, number, name, count, price, rate, warehouses)
+//         VALUES (
+//           ${product.goodsID}, 
+//           ${product.brand}, 
+//           ${product.number}, 
+//           ${product.name}, 
+//           ${product.count}, 
+//           ${product.price}, 
+//           ${product.rate}, 
+//           ${product.warehouses}
+//           )
+//         ON CONFLICT (id) DO NOTHING;
+//       `;
+//     }),
+//   );
 
-  return insertedProducts;
-}
+//   return insertedProducts;
+// }
 
 async function seedFaqs() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
