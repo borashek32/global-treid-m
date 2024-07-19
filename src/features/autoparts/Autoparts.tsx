@@ -2,18 +2,17 @@
 
 import Link from 'next/link';
 import styles from './Autoparts.module.css';
-import { ProductFromInternalDBType, ProdustFromFavoritApiType } from '@/shared/lib/types';
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getAutoparts } from '@/shared/lib/fetch-data-from-api';
 import { Input } from '@/shared/components/input/Input';
 import { Loader } from '@/shared/components/loader/Loader';
 import { CallSupport } from '@/shared/components/call-support/CallSupport';
 
-type Props = {
-  autoparts: ProdustFromFavoritApiType[],
-}
+// type Props = {
+//   autoparts: ProdustFromFavoritApiType[],
+// }
 
-export const Autoparts: FC<Props> = ({ autoparts }: Props) => {
+export const Autoparts = () => {
   const [vinNumber, setVinNumber] = useState('');
 
   useEffect(() => {
