@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import arrow from '@/shared/assets/icons/arrow.svg';
 import { FC, useState } from 'react';
-import { DeliveryType } from '@/shared/lib/types';
 import { CallSupport } from "@/shared/components/call-support/CallSupport"
+import { DeliveryType } from '@/shared/types/types';
 
 type Props = {
 	items: DeliveryType[]
@@ -20,7 +20,7 @@ export const Delivery: FC<Props> = ({ items }: Props) => {
 	
   return (
 		<section className='bg-gray-100'>
-			<div className="py-10  sm:py-16 lg:py-24">
+			<div className="py-2 sm:py-2 lg:py-2">
 				<div className="">
 					<h2>Доставка</h2>
 					<h4 className="">Доставка в интернет-магазине может быть осуществлена несколькими способами. Вот несколько вариантов:
