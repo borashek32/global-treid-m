@@ -1,16 +1,19 @@
 import Image from 'next/image';
 import styles from './Input.module.css';
 import search from '@/shared/assets/icons/search-black.svg';
-import { KeyboardEvent, FC, useState } from 'react';
+import { KeyboardEvent, Ref, useState } from 'react';
 
 type Props = {
   setNumber: (number: string) => void,
   type: 'number' | 'text',
   placeholder: string,
   search: boolean,
+  onBlur: () => void,
+  value: string,
+  ref?: Ref<HTMLInputElement>,
 }
 
-export const Input: FC<Props> = ({ 
+export const Input = ({ 
   setNumber,
   type,
   placeholder,

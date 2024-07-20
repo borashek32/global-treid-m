@@ -17,3 +17,11 @@
 .button__text {
   color: var(--color-bg-primary)
 }
+
+.button:active {
+  background-color: var(--color-primary-active);
+}
+
+.button:disabled {
+  background-color: var(--color-primary-disabled);
+}

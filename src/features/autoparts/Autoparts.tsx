@@ -12,6 +12,12 @@ import { selectAutoparts, selectError, selectIsLoading } from '@/shared/provider
 import { Error } from '@/shared/components/error/Error';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
 import { Button } from '@/shared/components/button/Button';
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { isFulfilled } from '@reduxjs/toolkit';
+
+type SearchFormType = {
+  search: string
+}
 
 export const Autoparts = () => {
   const dispatch = useAppDispatch();
@@ -19,9 +25,26 @@ export const Autoparts = () => {
   const isLoading = useAppSelector(selectIsLoading);
   const error = useAppSelector(selectError);
 
-  const searchAutoparts = (number: string) => {
-    dispatch(fetchAutoparts(number));
+  const {
+    handleSubmit,
+    getValues,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<SearchFormType>({
+    mode: 'onChange',
+    defaultValues: {
+      search: "",
+    },
+  });
+  const onSubmit: SubmitHandler<SearchFormType> = (data) => {
+    dispatch(fetchAutoparts(data.search));
   }
+
+  watch()
+  const isFillField = getValues([
+    'search',
+  ]).every(e => !!e)
 
   return (
     <section className={styles.autoparts}>
@@ -29,17 +52,30 @@ export const Autoparts = () => {
 				<h2>Каталог товаров</h2>
 				<h4>Наш каталог содержит более 1 млн. наименований товаров. Также мы работаем с другими агрегаторами запасных частей. Для поиска необходимой детали воспользуйтесь поиском</h4>
 			</div>
-      <div className={styles.autoparts__searchWrapper}>
-        <Input 
-          type='text'
-          search={true}
-          placeholder='Введите VIN детали, название или модель авто'
-          setNumber={searchAutoparts} 
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.autoparts__searchWrapper}>
+        <Controller
+          control={control}
+          name="search"
+          render={({ field: { onChange, onBlur, value, ref } }) => (
+            <Input 
+              type='text'
+              search={true}
+              placeholder='Введите VIN детали, название или модель авто'
+              setNumber={onChange} 
+              onBlur={onBlur}
+              value={value}
+              ref={ref}
+            />
+          )}
         />
         <div className={styles.autoparts__searchButton}>
-          <Button />
+          <Button 
+            type='submit'
+            name='Поиск'
+            disabled={!isFillField}
+          />
         </div>
-      </div>
+      </form>
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {autoparts.length !== 0 && <div className={styles.autoparts__listWrapper}>
