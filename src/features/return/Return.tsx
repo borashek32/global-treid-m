@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { CallSupport } from "@/shared/components/call-support/CallSupport"
-import { ReturnType } from "@/shared/lib/types"
+import { ReturnType } from '@/shared/types/types';
 
 type Props = {
 	items: ReturnType[]
@@ -12,7 +12,7 @@ export const Return: FC<Props> = ({ items }: Props) => {
 	
   return (
 		<section className="bg-white flex flex-col justify-center">
-			<div className="w-full py-10  sm:py-16 lg:py-24">
+			<div className="py-2 sm:py-2 lg:py-2">
 				<div className="flex flex-col justify-center">
 					<h2>Возврат</h2>
 					<h4>Возврат товара в интернет-магазине может быть осуществлен по разным причинам. Вот несколько примеров причин и способов возврата товара:</h4>

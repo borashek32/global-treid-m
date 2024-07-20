@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { DeliveryType, FaqType, ProdustFromFavoritApiType, ReturnType, UserType } from './types';
+import { DeliveryType, FaqType, ReturnType, UserType } from '../types/types';
 
 export async function fetchUsers() {
   try {
