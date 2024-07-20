@@ -11,6 +11,7 @@ import { useAppSelector } from '@/shared/hooks/use-app-selector';
 import { selectAutoparts, selectError, selectIsLoading } from '@/shared/providers/store-provider/selectors/autoparts-selectors';
 import { Error } from '@/shared/components/error/Error';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
+import { Button } from '@/shared/components/button/Button';
 
 export const Autoparts = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,9 @@ export const Autoparts = () => {
           placeholder='Введите VIN детали, название или модель авто'
           setNumber={searchAutoparts} 
         />
-        
+        <div className={styles.autoparts__searchButton}>
+          <Button />
+        </div>
       </div>
       {isLoading && <Loader />}
       {error && <Error error={error} />}
