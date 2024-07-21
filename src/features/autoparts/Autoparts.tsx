@@ -2,41 +2,30 @@
 
 import Link from 'next/link';
 import styles from './Autoparts.module.css';
-import { Input } from '@/shared/components/input/Input';
 import { Loader } from '@/shared/components/loader/Loader';
 import { CallSupport } from '@/shared/components/call-support/CallSupport';
-import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
-import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
 import { useAppSelector } from '@/shared/hooks/use-app-selector';
-import { selectAutoparts, selectError, selectIsLoading } from '@/shared/providers/store-provider/selectors/autoparts-selectors';
+import { 
+  selectAutoparts, 
+  selectError, 
+  selectIsLoading
+} from '@/shared/providers/store-provider/selectors/autoparts-selectors';
 import { Error } from '@/shared/components/error/Error';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
+import { SearchForm } from '@/shared/components/search-form/SearchForm';
 
 export const Autoparts = () => {
-  const dispatch = useAppDispatch();
   const autoparts = useAppSelector(selectAutoparts);
   const isLoading = useAppSelector(selectIsLoading);
   const error = useAppSelector(selectError);
-
-  const searchAutoparts = (number: string) => {
-    dispatch(fetchAutoparts(number));
-  }
-
+  
   return (
     <section className={styles.autoparts}>
       <div>
 				<h2>Каталог товаров</h2>
 				<h4>Наш каталог содержит более 1 млн. наименований товаров. Также мы работаем с другими агрегаторами запасных частей. Для поиска необходимой детали воспользуйтесь поиском</h4>
 			</div>
-      <div className={styles.autoparts__searchWrapper}>
-        <Input 
-          type='text'
-          search={true}
-          placeholder='Введите VIN детали, название или модель авто'
-          setNumber={searchAutoparts} 
-        />
-        
-      </div>
+      <SearchForm />
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {autoparts.length !== 0 && <div className={styles.autoparts__listWrapper}>
@@ -55,7 +44,7 @@ export const Autoparts = () => {
                   <Link href={'#'} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       В корзину
                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        <path stroke="currentColor" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
                   </Link>
                 </div>
