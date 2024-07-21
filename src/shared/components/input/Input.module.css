@@ -17,11 +17,19 @@
   color: var(--color-text-primary);
 }
 
-.searchImg {
+.search__img {
   position: absolute;
   top: 13px;
   right: 18px;
   cursor: pointer;
+}
+
+.search__error {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-error);
+  position: absolute;
+  top: 44px;
 }
 
 
@@ -29,16 +37,13 @@
   .search {
     width: 400px;
   }
-  .searchImg {
-    right: 12px;
+  .search__img {
+    display: none;
   }
 }
 
 @media (max-width: 560px) {
   .search {
     width: 300px;
-  }
-  .searchImg {
-    display: none;
   }
 }

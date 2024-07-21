@@ -2,44 +2,30 @@
 
 import Link from 'next/link';
 import styles from './Autoparts.module.css';
-import { Input } from '@/shared/components/input/Input';
 import { Loader } from '@/shared/components/loader/Loader';
 import { CallSupport } from '@/shared/components/call-support/CallSupport';
-import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
-import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
 import { useAppSelector } from '@/shared/hooks/use-app-selector';
-import { selectAutoparts, selectError, selectIsLoading } from '@/shared/providers/store-provider/selectors/autoparts-selectors';
+import { 
+  selectAutoparts, 
+  selectError, 
+  selectIsLoading
+} from '@/shared/providers/store-provider/selectors/autoparts-selectors';
 import { Error } from '@/shared/components/error/Error';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
-import { Button } from '@/shared/components/button/Button';
+import { SearchForm } from '@/shared/components/search-form/SearchForm';
 
 export const Autoparts = () => {
-  const dispatch = useAppDispatch();
   const autoparts = useAppSelector(selectAutoparts);
   const isLoading = useAppSelector(selectIsLoading);
   const error = useAppSelector(selectError);
-
-  const searchAutoparts = (number: string) => {
-    dispatch(fetchAutoparts(number));
-  }
-
+  
   return (
     <section className={styles.autoparts}>
       <div>
 				<h2>Каталог товаров</h2>
 				<h4>Наш каталог содержит более 1 млн. наименований товаров. Также мы работаем с другими агрегаторами запасных частей. Для поиска необходимой детали воспользуйтесь поиском</h4>
 			</div>
-      <div className={styles.autoparts__searchWrapper}>
-        <Input 
-          type='text'
-          search={true}
-          placeholder='Введите VIN детали, название или модель авто'
-          setNumber={searchAutoparts} 
-        />
-        <div className={styles.autoparts__searchButton}>
-          <Button />
-        </div>
-      </div>
+      <SearchForm />
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {autoparts.length !== 0 && <div className={styles.autoparts__listWrapper}>
