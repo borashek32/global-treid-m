@@ -15,11 +15,6 @@
   justify-content: center;
 }
 
-.autoparts__searchWrapper {
-  margin-top: 15px;
-  margin-bottom: 30px;
-}
-
 .autoparts__descText {
   font-size: 12px;
   line-height: 16px;
@@ -36,10 +31,6 @@
   justify-content: center;
 }
 
-.autoparts__searchButton {
-  display: none;
-}
-
 @media (max-width: 1439px) {
   .autoparts {
     padding: var(--section-padding-1439);
@@ -49,11 +40,6 @@
 @media (max-width: 720px) {
   .autoparts {
     padding: var(--section-padding-720);
-  }
-  .autoparts__searchButton {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
   }
 }
 

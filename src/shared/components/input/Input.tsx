@@ -1,53 +1,48 @@
 import Image from 'next/image';
 import styles from './Input.module.css';
-import search from '@/shared/assets/icons/search-black.svg';
+import searchImg from '@/shared/assets/icons/search-black.svg';
 import { KeyboardEvent, Ref, useState } from 'react';
 
 type Props = {
-  setNumber: (number: string) => void,
+  onChange: (value: string) => void
   type: 'number' | 'text',
   placeholder: string,
   search: boolean,
-  onBlur: () => void,
   value: string,
+  onPressEnter: () => void,
   ref?: Ref<HTMLInputElement>,
+  onBlur: () => void,
 }
 
 export const Input = ({ 
-  setNumber,
+  onPressEnter,
+  onChange,
   type,
   placeholder,
+  search,
+  value,
 }: Props) => {
-  const [localValue, setLocalValue] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null);
 
-  const searchProduct = (value: string) => {
-    if (value.trim() !== '') {
-      setNumber(value.trim())
-    } else {
-      setError('Поле обязательно для заполнения')
-    }
-  }
-
-  const onPressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-    setError(null)
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    setError(null);
     if (e.key === 'Enter') {
-      searchProduct(localValue)
+      onPressEnter();
     }
   };
 
   return (
     <div className={styles.search}>
       <input 
-        value={localValue}
-        onChange={e => setLocalValue(e.currentTarget.value)}
+        value={value}
+        onChange={e => onChange((e.currentTarget.value).trim())}
         className={styles.search__input} 
         type={type} 
         placeholder={placeholder}
-        onKeyPress={onPressEnter}
+        onKeyPress={onKeyPress}
       />
-      <p>{error}</p>
-      {search && <Image src={search} alt='search' className={styles.searchImg} />}
+      <p className={styles.search__error}>{error}</p>
+      {search && <Image src={searchImg} alt='search' className={styles.search__img} />}
     </div>
   )
 }

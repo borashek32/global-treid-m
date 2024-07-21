@@ -1,0 +1,16 @@
+.search {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.search__button {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .search__button {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+}
