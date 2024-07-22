@@ -19,7 +19,7 @@ export const Autoparts = () => {
   const error = useAppSelector(selectError);
   
   return (
-    <section className={styles.autoparts}>
+    <section id='autoparts' className={styles.autoparts}>
       <div>
 				<h2>Каталог товаров</h2>
 				<h4>Наш каталог содержит более 1 млн. наименований товаров. Также мы работаем с другими агрегаторами запасных частей. Для поиска необходимой детали воспользуйтесь поиском</h4>

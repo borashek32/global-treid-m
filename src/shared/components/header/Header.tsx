@@ -8,11 +8,11 @@ import search from '@/shared/assets/icons/search-black.svg';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Logo } from '../logo/Logo';
+import { HeaderLink } from '../links/HeaderLink';
 
 export const Header = () => {
   const [active, setActive] = useState(false);
-
-  
+  console.log(active)
 
   return (
     <>
@@ -20,16 +20,16 @@ export const Header = () => {
         <Logo />
         <ul className={styles.header__container}>
           <li>
-            <Link href='#' className={styles.header__link}>Поиск детали</Link>
+            <HeaderLink href='autoparts' name='Поиск детали' />
           </li>
           <li>
-            <Link href='#' className={styles.header__link}>Доставка</Link>
+            <HeaderLink href='delivery' name='Доставка' />
           </li>
           <li>
-            <Link href='#' className={styles.header__link}>Возврат</Link>
+            <HeaderLink href='return' name='Возврат' />
           </li>
           <li>
-            <Link href='#' className={styles.header__link}>FAQ</Link>
+            <HeaderLink href='faq' name='FAQ' />
           </li>
         </ul>
         <div className={styles.icons}>
@@ -43,24 +43,26 @@ export const Header = () => {
             <Image src={search} alt='search' width={20} />
           </Link>
         </div>
-        <div className={styles.burger} onClick={() => setActive(!active)}>
+        <div className={styles.burger} onClick={() => {
+          setActive(!active)
+          }}>
           <span></span>
         </div>
       </nav>
       {active && 
         <div className={styles.wrapper}>
           <ul className={styles.header__smallContainer}>
-            <li onClick={() => setActive(false)}>
-              <Link href='#' className={styles.header__link}>Поиск детали</Link>
+            <li>
+              <Link href='#autoparts' onClick={() => setActive(false)}>Поиск детали</Link>
             </li>
-            <li onClick={() => setActive(false)}>
-              <Link href='#' className={styles.header__link}>Доставка</Link>
+            <li>
+              <Link href='#delivery' onClick={() => setActive(false)}>Доставка</Link>
             </li>
-            <li onClick={() => setActive(false)}>
-              <Link href='#' className={styles.header__link}>Возврат</Link>
+            <li>
+              <Link href='#return' onClick={() => setActive(false)}>Возврат</Link>
             </li>
-            <li onClick={() => setActive(false)}>
-              <Link href='#' className={styles.header__link}>FAQ</Link>
+            <li>
+              <Link href='#faq' onClick={() => setActive(false)}>FAQ</Link>
             </li>
           </ul>
           <div className={styles.smallIcons}>

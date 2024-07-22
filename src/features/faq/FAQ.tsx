@@ -17,7 +17,7 @@ export const FAQ: FC<Props> = ({ items }: Props) => {
   };
 
   return (
-		<section className='bg-gray-100'>
+		<section id='faq' className='bg-gray-100'>
 			<div className="py-2 sm:py-2 lg:py-2">
 				<div>
 					<h2>Часто задаваемые вопросы</h2>
