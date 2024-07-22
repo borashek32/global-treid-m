@@ -6,7 +6,6 @@ import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
 import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
 import { setAutoparts } from '@/shared/providers/store-provider/slices/autoparts-slice';
-import { useState } from 'react';
 
 export type SearchProps = {
   search: string
@@ -14,8 +13,6 @@ export type SearchProps = {
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
-  const [isDisabled, setIsDisabled] = useState(true);
-  console.log(isDisabled)
 
   const {
     handleSubmit,
