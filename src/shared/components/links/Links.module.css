@@ -1,0 +1,6 @@
+/* header links styles */
+.header__link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}

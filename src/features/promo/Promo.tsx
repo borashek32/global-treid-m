@@ -3,9 +3,8 @@ import styles from './Promo.module.css'
 export const Promo = () => {
 
   return (
-    <div className={styles.promo}>
+    <div id='promo' className={styles.promo}>
       <div className={styles.promo__img}></div>
-
       <div className={styles.promo__container}>
         <h1 className={styles.promo__header}>Global Treid-M</h1>
         <h2 className={styles.promo__subheader}>Мы всегда рядом</h2>

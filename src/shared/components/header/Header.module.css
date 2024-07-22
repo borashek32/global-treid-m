@@ -19,11 +19,6 @@
   list-style: none;
 }
 
-.header__link {
-  color: var(--color-text-primary);
-  text-decoration: none;
-}
-
 .icons {
   display: flex;
   gap: 30px;
