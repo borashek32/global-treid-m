@@ -32,17 +32,17 @@ export const Input = ({
   };
 
   return (
-    <div className={styles.search}>
+    <div className={styles.input}>
       <input 
         value={value}
         onChange={e => onChange((e.currentTarget.value).trim())}
-        className={styles.search__input} 
+        className={styles.input__input} 
         type={type} 
         placeholder={placeholder}
         onKeyPress={onKeyPress}
       />
-      <p className={styles.search__error}>{error}</p>
-      {search && <Image src={searchImg} alt='search' className={styles.search__img} />}
+      <p className={styles.input__error}>{error}</p>
+      {search && <Image src={searchImg} alt='search' className={styles.input__img} />}
     </div>
   )
 }
