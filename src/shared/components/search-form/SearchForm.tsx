@@ -4,8 +4,9 @@ import { Input } from '@/shared/components/input/Input';
 import { Button } from '@/shared/components/button/Button';
 import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
 import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
-import { useEffect } from 'react';
+import { ProductFromFavoritApiType } from '@/shared/types/types';
 import { setAutoparts } from '@/shared/providers/store-provider/slices/autoparts-slice';
+import { useState } from 'react';
 
 export type SearchProps = {
   search: string
@@ -13,6 +14,8 @@ export type SearchProps = {
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
+  const [isDisabled, setIsDisabled] = useState(true);
+  console.log(isDisabled)
 
   const {
     handleSubmit,
@@ -31,11 +34,12 @@ export const SearchForm = () => {
   }
 
   const onSubmit: SubmitHandler<SearchProps> = (data) => {
-    dispatch(fetchAutoparts(data.search))
-      .unwrap()
-      .then(() => {
-        reset({ search: '' });
-      })
+    dispatch(fetchAutoparts(data.search));
+  }
+
+  const resetForm = () => {
+    reset({ search: '' });
+    dispatch(setAutoparts([] as ProductFromFavoritApiType[]));
   }
 
   const searchValue = watch('search')
@@ -57,11 +61,17 @@ export const SearchForm = () => {
           />
         )}
       />
-      <div className={styles.search__button}>
+      <div className={styles.search__buttons}>
         <Button
           type='submit'
           name='Поиск'
           disabled={!searchValue}
+        />
+        <Button
+          type='button'
+          name='Сбросить'
+          onClick={resetForm}
+          disabled={searchValue ? false : true}
         />
       </div>
     </form>
