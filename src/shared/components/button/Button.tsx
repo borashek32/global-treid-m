@@ -12,7 +12,6 @@ export const Button: FC<Props> = ({
   name,
   disabled,
 }: Props) => {
-  console.log(disabled)
 
   return (
     <button 
