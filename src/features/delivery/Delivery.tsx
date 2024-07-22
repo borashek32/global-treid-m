@@ -18,7 +18,7 @@ export const Delivery: FC<Props> = ({ items }: Props) => {
 
 	
   return (
-		<section className='bg-gray-100'>
+		<section id='delivery' className='bg-gray-100'>
 			<div className="py-2 sm:py-2 lg:py-2">
 				<div className="">
 					<h2>Доставка</h2>

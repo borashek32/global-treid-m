@@ -3,7 +3,7 @@ import { Button } from "../button/Button";
 import emailImg from '@/shared/assets/icons/email.svg';
 import phoneImg from '@/shared/assets/icons/phone.svg';
 import Link from "next/link";
-import { AppLink } from "../link/Link";
+import { AppLink } from "../links/SupportLink";
 
 type Props = {
   title?: string,

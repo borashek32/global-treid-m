@@ -10,7 +10,7 @@ type Props = {
 export const Return: FC<Props> = ({ items }: Props) => {
 	
   return (
-		<section className="bg-white flex flex-col justify-center">
+		<section id='return' className="bg-white flex flex-col justify-center">
 			<div className="py-2 sm:py-2 lg:py-2">
 				<div className="flex flex-col justify-center">
 					<h2>Возврат</h2>
