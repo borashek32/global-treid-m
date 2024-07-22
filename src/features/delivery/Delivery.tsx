@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import arrow from '@/shared/assets/icons/arrow.svg';
 import { FC, useState } from 'react';
-import { CallSupport } from "@/shared/components/call-support/CallSupport"
 import { DeliveryType } from '@/shared/types/types';
 
 type Props = {
@@ -52,7 +51,6 @@ export const Delivery: FC<Props> = ({ items }: Props) => {
 							)
 						})}
 					</div>
-					<CallSupport />
 				</div>
 			</div>
 		</section>

@@ -1,7 +1,6 @@
 'use client'
 
 import { FC } from 'react';
-import { CallSupport } from "@/shared/components/call-support/CallSupport"
 import { ReturnType } from '@/shared/types/types';
 
 type Props = {
@@ -20,7 +19,7 @@ export const Return: FC<Props> = ({ items }: Props) => {
 				<div className='flex gap-8 flex-wrap justify-center items-center'>
 					{items && items.map((item: ReturnType) => {
 						return (
-							<div key={item.id} className="relative flex flex-col content-center mt-6 text-gray-700 bg-gray-100 shadow-md bg-clip-border grow shrink rounded-xl w-64 sm:w-48">
+							<div key={item.id} className="flex flex-col content-center mt-6 text-gray-700 bg-gray-100 shadow-md bg-clip-border grow shrink rounded-xl w-64 sm:w-48">
 								<div className="p-6">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
 										className="w-12 h-12 mb-4 text-gray-900">
@@ -35,7 +34,6 @@ export const Return: FC<Props> = ({ items }: Props) => {
 						)
 					})}
 				</div>
-				<CallSupport />
 			</div>
 		</section>
   )

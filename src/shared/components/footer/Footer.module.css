@@ -85,6 +85,9 @@
     padding: var(--section-padding-720);
     flex-direction: column;
   }
+  .footer__socialMediaWrapper {
+    justify-content: flex-start;
+  }
   .footer__contacts {
     margin-top: 30px;
     margin-bottom: 30px;

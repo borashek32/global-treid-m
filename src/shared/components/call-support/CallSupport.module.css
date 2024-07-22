@@ -1,0 +1,40 @@
+.support {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.support__imgWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-text-error);
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.support::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  border: 10px solid transparent; 
+  border-bottom: 10px solid var(--color-text-error); 
+  border-left: 10px solid var(--color-text-error);
+  z-index: 2;
+  transform: rotate(-3deg);
+}
+
+.support__img {
+  position: absolute;
+  z-index: 11;
+  top: 10px;
+  left: 10px;
+}
+
+.support__modal {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}
