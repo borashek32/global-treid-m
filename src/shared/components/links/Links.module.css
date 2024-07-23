@@ -1,6 +1,10 @@
 /* header links styles */
-.header__link {
+.link {
   color: var(--color-text-primary);
   text-decoration: none;
   cursor: pointer;
+}
+
+.link__footerLink {
+  color: var(--color-bg-primary);
 }

@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import styles from './Header.module.css';
 import cart from '@/shared/assets/icons/cart.svg';
 import user from '@/shared/assets/icons/user.svg';
 import search from '@/shared/assets/icons/search-black.svg';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Logo } from '../logo/Logo';
-import { HeaderLink } from '../links/HeaderLink';
+import { Logo } from '@/shared/components/logo/Logo';
+import { AppLink } from '@/shared/components/links/AppLink';
 
 export const Header = () => {
   const [active, setActive] = useState(false);
@@ -19,16 +19,16 @@ export const Header = () => {
         <Logo />
         <ul className={styles.header__container}>
           <li>
-            <HeaderLink href='autoparts' name='Поиск детали' />
+            <AppLink href='autoparts' name='Поиск детали' />
           </li>
           <li>
-            <HeaderLink href='delivery' name='Доставка' />
+            <AppLink href='delivery' name='Доставка' />
           </li>
           <li>
-            <HeaderLink href='return' name='Возврат' />
+            <AppLink href='return' name='Возврат' />
           </li>
           <li>
-            <HeaderLink href='faq' name='FAQ' />
+            <AppLink href='faq' name='FAQ' />
           </li>
         </ul>
         <div className={styles.icons}>
@@ -38,7 +38,7 @@ export const Header = () => {
           <Link href='/user/dashboard'>
             <Image src={user} alt='user dashboard' width={20} />
           </Link>
-          <Link href='#'>
+          <Link href='autoparts'>
             <Image src={search} alt='search' width={20} />
           </Link>
         </div>
