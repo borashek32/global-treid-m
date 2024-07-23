@@ -12,7 +12,6 @@ import { HeaderLink } from '../links/HeaderLink';
 
 export const Header = () => {
   const [active, setActive] = useState(false);
-  console.log(active)
 
   return (
     <>
