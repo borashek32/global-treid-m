@@ -3,26 +3,33 @@
   bottom: 30px;
   right: 30px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .support__imgWrapper {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: var(--color-text-error);
+  background-color: var(--color-secondary);
   position: relative;
   z-index: 10;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.support::before {
+.support__imgWrapper::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 5px;
   border: 10px solid transparent; 
-  border-bottom: 10px solid var(--color-text-error); 
-  border-left: 10px solid var(--color-text-error);
+  border-bottom: 10px solid var(--color-secondary); 
+  border-left: 10px solid var(--color-secondary);
   z-index: 2;
   transform: rotate(-3deg);
 }
