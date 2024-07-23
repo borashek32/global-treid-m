@@ -1,20 +1,21 @@
-import Link from 'next/link';
+'use client';
+
 import styles from './Footer.module.css';
 import { Logo } from '../logo/Logo';
 import { SocialMedia } from '../social-media/SocialMedia';
+import { AppLink } from '@/shared/components/links/AppLink';
 
 export const Footer = () => {
 
   return (
     <div className={styles.footer}>
       <div className={styles.footer__container}>
-          <div className={styles.footer__menu}>
-            <Link href='#' className={styles.footer__menuLink}>Поиск детали</Link>
-            <Link href='#' className={styles.footer__menuLink}>Доставка</Link>
-            <Link href='#' className={styles.footer__menuLink}>Возврат</Link>
-            <Link href='#' className={styles.footer__menuLink}>Реквизиты</Link>
-            <Link href='#' className={styles.footer__menuLink}>FAQ</Link>
-          </div>
+          <ul className={styles.footer__menu}>
+            <AppLink isFooterLink={true} href='autoparts' name='Поиск детали' />
+            <AppLink isFooterLink={true} href='delivery' name='Доставка' />
+            <AppLink isFooterLink={true} href='return' name='Возврат' />
+            <AppLink isFooterLink={true} href='faq' name='FAQ' />
+          </ul>
           <div className={styles.footer__contacts}>
             <div className={styles.footer__logo}>
               <Logo />

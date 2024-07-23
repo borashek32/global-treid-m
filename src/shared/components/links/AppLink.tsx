@@ -4,13 +4,13 @@ import styles from './Links.module.css';
 type Props = {
   href: string,
   name: string,
-  callback?: () => void,
+  isFooterLink?: boolean
 }
 
-export const HeaderLink = ({
+export const AppLink = ({
   href,
   name,
-  callback,
+  isFooterLink
 }: Props) => {
 
   return (
@@ -21,8 +21,7 @@ export const HeaderLink = ({
         smooth={true} 
         offset={-70} 
         duration={500}
-        className={styles.header__link}
-        onSetActive={callback}
+        className={styles.link + ' ' + (isFooterLink ? styles.link__footerLink : '')}
       >
         {name}
       </Link>

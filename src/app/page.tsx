@@ -7,7 +7,6 @@ import { Return } from '@/features/return/Return';
 
 export default async function Page() {
 	const faqs = await fetchFaqs();
-  // const autoparts = await fetchAutoparts();
   const deliveries = await fetchDeliveries();
   const returns = await fetchReturns();
 
