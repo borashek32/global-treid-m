@@ -13,6 +13,11 @@
   gap: 65px;
 }
 
+.menu__footerLink {
+  text-decoration: none;
+  color: #fff
+}
+
 .header__container {
   display: flex;
   gap: 65px;
