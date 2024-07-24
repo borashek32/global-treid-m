@@ -11,7 +11,7 @@ type Props = {
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void,
 }
 
-export const DashboardLinks = ({ onClick }: Props) => {
+export const MenuLinks = ({ onClick }: Props) => {
   const path = usePathname();
 
   return (

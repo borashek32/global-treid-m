@@ -1,7 +1,7 @@
-import { Header } from "@/shared/components/header/Header";
+import { Header } from "@/shared/components/navigation/header/Header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Footer } from "@/shared/components/footer/Footer";
+import { Footer } from "@/shared/components/navigation/footer/Footer";
 import '@/shared/assets/styles/global.css';
 import { StoreProvider } from "@/shared/providers/store-provider/ui/StoreProvider";
 import { CallSupport } from "@/shared/components/call-support/CallSupport";

@@ -1,8 +1,8 @@
 'use client';
 
 import styles from './Footer.module.css';
-import { Logo } from '../logo/Logo';
-import { SocialMedia } from '../social-media/SocialMedia';
+import { Logo } from '../../logo/Logo';
+import { SocialMedia } from '../../social-media/SocialMedia';
 import { Menu } from '../header/Menu';
 
 export const Footer = () => {
