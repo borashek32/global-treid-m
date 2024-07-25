@@ -4,15 +4,12 @@ import Link from "next/link";
 import { Fragment, MouseEvent } from "react";
 import cart from '@/shared/assets/icons/cart.svg';
 import user from '@/shared/assets/icons/user.svg';
-import search from '@/shared/assets/icons/search-black.svg';
-import { usePathname } from "next/navigation";
 
 type Props = {
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void,
 }
 
 export const MenuLinks = ({ onClick }: Props) => {
-  const path = usePathname();
 
   return (
     <Fragment>
