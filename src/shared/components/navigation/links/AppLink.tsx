@@ -4,13 +4,15 @@ import styles from './Links.module.css';
 type Props = {
   href: string,
   name: string,
-  isFooterLink?: boolean
+  isFooterLink: boolean,
+  onClick?: any,
 }
 
 export const AppLink = ({
   href,
   name,
-  isFooterLink
+  isFooterLink,
+  onClick,
 }: Props) => {
 
   return (
@@ -22,6 +24,7 @@ export const AppLink = ({
         offset={-70} 
         duration={500}
         className={styles.link + ' ' + (isFooterLink ? styles.link__footerLink : '')}
+        onClick={onClick}
       >
         {name}
       </Link>

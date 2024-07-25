@@ -2,7 +2,7 @@
 
 import styles from './CallSupport.module.css';
 import { useState } from "react";
-import { SupportLink } from '../links/SupportLink';
+import { SupportLink } from '../navigation/links/SupportLink';
 
 export const CallSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
