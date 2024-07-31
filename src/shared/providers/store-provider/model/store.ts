@@ -1,9 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import autopartsReducer from '../slices/autoparts-slice'
+import { configureStore } from '@reduxjs/toolkit';
+import autopartsReducer from '../slices/autoparts-slice';
+import cartReducer from '../slices/cart-slice';
 
 export const store = configureStore({
   reducer: {
     autoparts: autopartsReducer,
+    cart: cartReducer,
   },
 })
 

@@ -3,7 +3,7 @@ import styles from './SearchForm.module.css';
 import { Input } from '@/shared/components/input/Input';
 import { Button } from '@/shared/components/button/Button';
 import { useAppDispatch } from '@/shared/hooks/use-app-dispatch';
-import { fetchAutoparts } from '@/shared/services/autoparts/autoparts-reducer';
+import { fetchAutoparts } from '@/shared/services/autoparts-reducer';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
 import { setAutoparts } from '@/shared/providers/store-provider/slices/autoparts-slice';
 

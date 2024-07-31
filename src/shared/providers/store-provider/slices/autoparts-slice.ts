@@ -19,8 +19,9 @@ const AutopartsSlice = createSlice({
   initialState,
   reducers: {
     setAutoparts(state, action: PayloadAction<ProductFromFavoritApiType[]>) {
-      state.autoparts = action.payload;
-    },
+      const autopartsArr = action.payload.filter((item: ProductFromFavoritApiType) => item.price > 0);
+      state.autoparts = autopartsArr;
+    },       
     setIsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
