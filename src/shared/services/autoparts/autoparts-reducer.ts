@@ -15,7 +15,7 @@ export const fetchAutoparts = createAsyncThunk(
       dispatch(setIsLoading(false));
       dispatch(setAutoparts(response.data.goods));
     } catch (error) {
-      dispatch(setError(`Failed to fetch autoparts for VIN number ${number}`))
+      dispatch(setError(`Не удается загрузить данные по товару с номером ${number}`))
     }
   }, 2000)
 });
