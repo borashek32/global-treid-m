@@ -4,5 +4,6 @@ export const PATHS = {
   RETURN: 'return',
   FAQ: 'faq',
   DASHBOARD: '/user/dashboard',
-  CART: '/user/dashboard/cart'
+  CART: '/user/dashboard/cart',
+  FOR_OUR_PARTNERS: '/for-our-partners',
 };
