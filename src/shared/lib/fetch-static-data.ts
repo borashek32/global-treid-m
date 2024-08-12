@@ -3,7 +3,6 @@ import { DeliveryType, FaqType, ReturnType, UserType } from '../types/types';
 
 export async function fetchUsers() {
   try {
-    console.log('Fetching users data...');
     const data = await sql<UserType>`SELECT * FROM users`;
 
     return data.rows;
@@ -18,19 +17,9 @@ export async function fetchFaqs() {
 
     return data.rows;
   } catch (error) {
-    throw new Error('Failed to fetch faqs data.');
+    throw new Error('Не удается загрузить часто задаваеиые вопросы.');
   }
 }
-
-// export async function fetchAutoparts() {
-//   try {
-//     const data = await sql<ProdustFromFavoritApiType>`SELECT * FROM products`;
-
-//     return data.rows;
-//   } catch (error) {
-//     throw new Error('Failed to fetch products data.');
-//   }
-// }
 
 export async function fetchDeliveries() {
   try {
@@ -38,7 +27,7 @@ export async function fetchDeliveries() {
 
     return data.rows;
   } catch (error) {
-    throw new Error('Failed to fetch delivery data.');
+    throw new Error('Не удается загрузить данные по доставке.');
   }
 }
 
@@ -48,6 +37,6 @@ export async function fetchReturns() {
 
     return data.rows;
   } catch (error) {
-    throw new Error('Failed to fetch returns data.');
+    throw new Error('Не удается загрузить данные по возврату товаров.');
   }
 }
