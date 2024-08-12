@@ -3,6 +3,7 @@ import styles from '@/shared/assets/styles/NotFound.module.css';
 import { TbError404 } from 'react-icons/tb';
  
 export default function NotFound() {
+
   return (
     <div className={styles.error}>
       <TbError404 size={100}/>
