@@ -1,0 +1,13 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error__link {
+  font-size: 24px;
+  text-decoration: underline;
+  color: var(--color-primary);
+  cursor: pointer;
+}
