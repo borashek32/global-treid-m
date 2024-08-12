@@ -19,6 +19,14 @@ export const Menu = ({ onClick, isFooterMenu }: Props) => {
         (
           <Fragment>
             <li>
+              <Link 
+                href={PATHS.FOR_OUR_PARTNERS} 
+                className={styles.link}
+              >
+                Для наших партнеров
+              </Link>
+            </li>
+            <li>
               <AppLink 
                 href={PATHS.AUTOPARTS} 
                 name='Поиск детали' 
@@ -53,6 +61,11 @@ export const Menu = ({ onClick, isFooterMenu }: Props) => {
           </Fragment>
         ) : (
           <Fragment>
+            <li>
+              <Link href={PATHS.FOR_OUR_PARTNERS} className={styles.link}>
+                Для наших партнеров
+              </Link>
+            </li>
             <li className={isFooterMenu ? styles.menu__footerLink : ''}>
               <Link href={`/#${PATHS.AUTOPARTS}`} onClick={onClick}>
                 Поиск детали
