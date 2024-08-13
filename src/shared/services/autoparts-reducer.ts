@@ -6,8 +6,8 @@ export const fetchAutoparts = createAsyncThunk(
   'autoparts/fetchAutoparts', 
   (number: string, thunkAPI ) => {
 
-  const { dispatch } = thunkAPI
-  dispatch(setIsLoading(true))
+  const { dispatch } = thunkAPI;
+  dispatch(setIsLoading(true));
   
   setTimeout(async () => {
     try {
@@ -15,6 +15,7 @@ export const fetchAutoparts = createAsyncThunk(
       dispatch(setIsLoading(false));
       dispatch(setAutoparts(response.data.goods));
     } catch (error) {
+      dispatch(setIsLoading(false));
       dispatch(setError(`Failed to fetch autoparts for VIN number ${number}`))
     }
   }, 2000)
