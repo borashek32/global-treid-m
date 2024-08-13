@@ -11,7 +11,7 @@ export const fetchAutoparts = createAsyncThunk(
     try {
       const response = await autopartsApi.getAutoparts(number);
       dispatch(setAutoparts(response.data.goods));
-      // return response.data.goods;
+      return response.data.goods;
     } catch (error) {
       dispatch(setError(`Не удается загрузить данные по товару с номером ${number}`));
     } finally {
