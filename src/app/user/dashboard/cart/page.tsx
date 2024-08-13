@@ -1,3 +1,4 @@
+import { Cart } from "@/features/dashboard/cart/Cart";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,8 +6,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  
 
-  return (
-    <p>cart</p>
-  )
+  return <Cart />
 }

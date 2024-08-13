@@ -4,18 +4,18 @@ import { autopartsApi } from "@/shared/api/autoparts-api";
 
 export const fetchAutoparts = createAsyncThunk(
   'autoparts/fetchAutoparts', 
-  (number: string, thunkAPI ) => {
-
-  const { dispatch } = thunkAPI
-  dispatch(setIsLoading(true))
-  
-  setTimeout(async () => {
+  async (number: string, { dispatch, rejectWithValue }) => {
+    
+    dispatch(setIsLoading(true));
+    
     try {
       const response = await autopartsApi.getAutoparts(number);
-      dispatch(setIsLoading(false));
       dispatch(setAutoparts(response.data.goods));
+      return response.data.goods;
     } catch (error) {
-      dispatch(setError(`Не удается загрузить данные по товару с номером ${number}`))
+      dispatch(setError(`Не удается загрузить данные по товару с номером ${number}`));
+    } finally {
+      dispatch(setIsLoading(false));
     }
-  }, 2000)
-});
+  }
+);
