@@ -32,7 +32,7 @@ export const Autoparts = () => {
           {autoparts
             .filter((autopart: ProductFromFavoritApiType) => autopart.price > 0)
             .map((autopart: ProductFromFavoritApiType) => {
-              return <AutopartCard key={autopart.goodsID} item={autopart} />
+              return <AutopartCard key={autopart.goodsID} item={autopart} inCart={false} />
             })
           }
         </div>
