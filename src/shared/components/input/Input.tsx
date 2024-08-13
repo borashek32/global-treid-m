@@ -9,7 +9,7 @@ type Props = {
   placeholder: string,
   search: boolean,
   value: string,
-  onPressEnter: () => void,
+  onPressEnter: (value: string) => void,
   ref?: Ref<HTMLInputElement>,
   onBlur: () => void,
 }
@@ -27,7 +27,7 @@ export const Input = ({
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     setError(null);
     if (e.key === 'Enter') {
-      onPressEnter();
+      onPressEnter(e.currentTarget.value);
     }
   };
 
