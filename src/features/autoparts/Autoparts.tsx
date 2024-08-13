@@ -12,7 +12,7 @@ import {
 import { Error } from '@/shared/components/error/Error';
 import { ProductFromFavoritApiType } from '@/shared/types/types';
 import { SearchForm } from '@/shared/components/search-form/SearchForm';
-import { AutopartCard } from '../autopart-card/AutopartCard';
+import { AutopartCard } from '@/features/autoparts/autopart-card/AutopartCard';
 
 export const Autoparts = () => {
   const autoparts = useAppSelector(selectAutoparts);
@@ -32,7 +32,7 @@ export const Autoparts = () => {
           {autoparts
             .filter((autopart: ProductFromFavoritApiType) => autopart.price > 0)
             .map((autopart: ProductFromFavoritApiType) => {
-              return <AutopartCard key={autopart.goodsID} {...autopart} />
+              return <AutopartCard key={autopart.goodsID} item={autopart} inCart={false} />
             })
           }
         </div>
