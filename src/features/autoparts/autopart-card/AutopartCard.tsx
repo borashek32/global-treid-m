@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch"
-import { setAutoparts } from "@/shared/providers/store-provider/slices/autoparts-slice";
+import { setAutoparts, setGoodsInCart } from "@/shared/providers/store-provider/slices/autoparts-slice";
 import { ProductFromFavoritApiType } from "@/shared/types/types"
 import Link from "next/link"
 
@@ -11,7 +11,7 @@ export const AutopartCard = (props: Props) => {
   const dispatch = useAppDispatch();
   
   const addToCart = () => {
-    // dispatch(setAutoparts(props.item));
+    dispatch(setGoodsInCart(props.item));
   }
 
   return (
