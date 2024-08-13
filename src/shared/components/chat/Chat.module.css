@@ -80,3 +80,8 @@
 .input:focus {
   outline: none !important;
 }
+
+.chat__error {
+  color: var(--color-text-error);
+  font-size: 12px;
+}
